@@ -1,0 +1,7 @@
+---
+
+- name: Create rc.subr fragment
+  template:
+    src: FreeBSD.rc.subr.j2
+    dest: /etc/rc.conf.d/riemann
+  notify: Restart riemann

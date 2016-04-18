@@ -1,0 +1,5 @@
+---
+__riemann_service: riemann
+__riemann_conf: /usr/local/etc/riemann/riemann.config
+__riemann_min_mem: 256m
+__riemann_max_mem: 1g

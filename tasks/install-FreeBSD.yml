@@ -1,0 +1,4 @@
+- name: Install riemann
+  pkgng:
+    name: riemann
+    state: present

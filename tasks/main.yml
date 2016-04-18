@@ -1,0 +1,29 @@
+---
+# tasks file for ansible-role-riemann
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: install-FreeBSD.yml
+  when: ansible_os_family == 'FreeBSD'
+
+- include: configure-FreeBSD.yml
+
+- name: Create log dir
+  file:
+    path: "{{ riemann_log_dir }}"
+    state: directory
+    owner: "{{ riemann_user }}"
+    group: "{{ riemann_group }}"
+    mode: 0755
+
+- name: Create riemann.config
+  template:
+    src: riemann.config.j2
+    dest: "{{ riemann_conf }}"
+  notify: Restart riemann
+
+- name: Start riemann
+  service:
+    name: "{{ riemann_service }}"
+    enabled: yes
+    state: started

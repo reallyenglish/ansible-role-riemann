@@ -1,0 +1,5 @@
+- hosts: all
+  roles:
+    - ansible-role-riemann
+  vars:
+    riemann_max_mem: 768m
