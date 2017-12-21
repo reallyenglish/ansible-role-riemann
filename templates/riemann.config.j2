@@ -1,3 +1,6 @@
 ; -*- mode: clojure; -*-
 ; vim: filetype=clojure
-
+; Listen on the local interface over TCP (5555), UDP (5555), and websockets
+(tcp-server {:host "localhost" :port 5555})
+(udp-server {:host "localhost" :port 5555})
+(ws-server {:port 5556})
