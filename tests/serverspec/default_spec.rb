@@ -24,7 +24,7 @@ describe service(service) do
 end
 
 ports.each do |p|
-  describe port(p) do
+  describe port(p), retry: 30, retry_wait: 1 do
     it { should be_listening }
   end
 end
