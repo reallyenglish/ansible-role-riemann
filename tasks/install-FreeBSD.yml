@@ -2,3 +2,11 @@
   pkgng:
     name: riemann
     state: present
+
+- name: Patch riemann service
+  lineinfile:
+    path: /usr/local/etc/rc.d/riemann
+    state: absent
+    regexp: '-t riemann'
+  when:
+    - "ansible_distribution_version | version_compare('11.0', '<')"
